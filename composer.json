@@ -1,0 +1,11 @@
+{
+  "autoload": {
+    "psr-0": {
+      "Coin": "src"
+    }
+  },
+  "require": {
+    "react/zmq": "0.2.*",
+    "silex/silex": "~1.1"
+  }
+}
