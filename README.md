@@ -13,7 +13,7 @@ The exchange runs on a front end php server that processes HTTP API requests and
 
 The API server is built using Silex which is a super light weight PHP framework inspired by Sinatra. The API server is run from `bin/api_server.php`. The routes are defined in `ApiController`.
 
-The exchange server runs in `bin/exchange_loop.php`.
+The exchange server runs in `bin/exchange_loop.php` and uses the `Exchange` class to run the exchange.
 
 ### TODO's
 * The data structures in the exchange can be much more efficient
