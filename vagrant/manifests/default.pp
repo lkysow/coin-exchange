@@ -59,6 +59,7 @@ exec { 'zmq-extension':
 exec { "composer-install":
   command => "/var/www/composer.phar install",
   unless => '[ -f /var/www/vendor/autoload.php ]',
+  onlyif => 'pecl list-all | grep Zero',
   cwd => "/var/www/",
   require => Exec['zmq-extension']
 }
@@ -80,5 +81,6 @@ exec { "start-server":
   command => "nohup php -S 0.0.0.0:9999 -t bin &> /dev/null &",
   cwd => "/var/www",
   unless => 'ps -ef | grep "[0-9]\{2\} php -S 0.0.0.0:9999 -t bin/"',
-  require => Exec['start-exchange']
+  onlyif => 'pecl list-all | grep Zero',
+  require => [Exec['start-exchange'], Exec['composer-install']]
 }
